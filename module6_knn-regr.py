@@ -51,12 +51,12 @@ class KNNCalculator:
             print("k should be no larger than N.")
             raise ValueError
         
-        points_x = self.points[:1]
+        points_x = self.points[:, 0]
         distances_x = np.abs(np.subtract(points_x, inputX))
         # select out the k nearest x's indexes
-        knn_index = np.argsort(distances_x)[: self.k]
+        knn_index = np.argsort(distances_x)[:self.k]
         # calculate the mean value of neareast points Y's
-        outputY = np.mean(self.points[:2][knn_index])
+        outputY = np.mean(self.points[:, 1][knn_index])
         
         return outputY
 
